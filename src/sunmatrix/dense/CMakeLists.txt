@@ -60,7 +60,7 @@ endif(BUILD_STATIC_LIBS)
 #  - Set the library name and make sure it is not deleted
 #  - Set VERSION and SOVERSION for shared libraries
 #  - Install the SUNMATRIXDENSE library
-if(BUILD_SHARED_LIBS)
+if(${BUILD_SHARED_LIBS})
   add_library(sundials_sunmatrixdense_shared SHARED ${sunmatrixdense_SOURCES} ${shared_SOURCES})
 
   if(UNIX)
@@ -72,7 +72,7 @@ if(BUILD_SHARED_LIBS)
   set_target_properties(sundials_sunmatrixdense_shared
     PROPERTIES VERSION ${sunmatrixlib_VERSION} SOVERSION ${sunmatrixlib_SOVERSION})
   install(TARGETS sundials_sunmatrixdense_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
-endif(BUILD_SHARED_LIBS)
+endif(${BUILD_SHARED_LIBS})
 
 # Install the SUNMATRIXDENSE header files
 install(FILES ${sunmatrixdense_HEADERS} DESTINATION include/sunmatrix)
@@ -88,7 +88,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
     install(TARGETS sundials_fsunmatrixdense_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
   endif(BUILD_STATIC_LIBS)
 
-  if(BUILD_SHARED_LIBS)
+  if(${BUILD_SHARED_LIBS})
     add_library(sundials_fsunmatrixdense_shared ${fsunmatrixdense_SOURCES})
 
     # fsunmatrixdense depends on sunmatrixdense
@@ -99,7 +99,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
     set_target_properties(sundials_fsunmatrixdense_shared
       PROPERTIES VERSION ${sunmatrixlib_VERSION} SOVERSION ${sunmatrixlib_SOVERSION})
     install(TARGETS sundials_fsunmatrixdense_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
-  endif(BUILD_SHARED_LIBS)
+  endif(${BUILD_SHARED_LIBS})
 
 endif(F77_INTERFACE_ENABLE AND F77_FOUND)
 

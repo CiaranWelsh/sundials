@@ -53,7 +53,7 @@ add_prefix(${sundials_SOURCE_DIR}/include/sundials/ sundials_HEADERS)
 add_definitions(-DBUILD_SUNDIALS_LIBRARY)
 
 # Create an object library out of the generic sundials modules
-if(BUILD_STATIC_LIBS)
+if(${BUILD_STATIC_LIBS})
   add_library(sundials_generic_static_obj OBJECT
     sundials_band.c
     sundials_dense.c

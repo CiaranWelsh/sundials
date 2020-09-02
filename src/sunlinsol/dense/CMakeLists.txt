@@ -32,7 +32,7 @@ set(sunlinsoldense_HEADERS
 #  - Add the build target for the library
 #  - Set the library name and make sure it is not deleted
 #  - Install the library
-if(BUILD_STATIC_LIBS)
+if(${BUILD_STATIC_LIBS})
 
   add_library(sundials_sunlinsoldense_static
     STATIC ${sunlinsoldense_SOURCES} ${shared_SOURCES})
@@ -52,7 +52,7 @@ if(BUILD_STATIC_LIBS)
   install(TARGETS sundials_sunlinsoldense_static
     DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-endif(BUILD_STATIC_LIBS)
+endif(${BUILD_STATIC_LIBS})
 
 # Rules for building and installing the shared library:
 #  - Add the build target for the library
@@ -94,7 +94,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
 
   set(fsunlinsoldense_SOURCES fsunlinsol_dense.c)
 
-  if(BUILD_STATIC_LIBS)
+  if(${BUILD_STATIC_LIBS})
     add_library(sundials_fsunlinsoldense_static
       STATIC ${fsunlinsoldense_SOURCES})
     set_target_properties(sundials_fsunlinsoldense_static
@@ -109,7 +109,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
       sundials_sunlinsoldense_static)
     install(TARGETS sundials_fsunlinsoldense_static
       DESTINATION ${CMAKE_INSTALL_LIBDIR})
-  endif(BUILD_STATIC_LIBS)
+  endif(${BUILD_STATIC_LIBS})
 
   if(BUILD_SHARED_LIBS)
     add_library(sundials_fsunlinsoldense_shared

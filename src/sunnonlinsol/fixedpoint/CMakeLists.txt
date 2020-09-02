@@ -59,7 +59,7 @@ endif()
 #  - Set the library name and make sure it is not deleted
 #  - Set VERSION and SOVERSION for shared libraries
 #  - Install the library
-if(BUILD_SHARED_LIBS)
+if(${BUILD_SHARED_LIBS})
   add_library(sundials_sunnonlinsolfixedpoint_shared SHARED ${lib_SOURCES} ${shared_SOURCES})
 
   if(UNIX)
@@ -87,7 +87,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
     install(TARGETS sundials_fsunnonlinsolfixedpoint_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
   endif()
 
-  if(BUILD_SHARED_LIBS)
+  if(${BUILD_SHARED_LIBS})
     add_library(sundials_fsunnonlinsolfixedpoint_shared ${flib_SOURCES})
 
     # depends on fnvecserial and sunnonlinsolfixedpoint

@@ -34,7 +34,7 @@ set(sunlinsolpcg_HEADERS
 #  - Add the build target for the library
 #  - Set the library name and make sure it is not deleted
 #  - Install the library
-if(BUILD_STATIC_LIBS)
+if(${BUILD_STATIC_LIBS})
 
   add_library(sundials_sunlinsolpcg_static
     STATIC ${sunlinsolpcg_SOURCES} ${shared_SOURCES})
@@ -58,7 +58,7 @@ if(BUILD_STATIC_LIBS)
   install(TARGETS sundials_sunlinsolpcg_static
     DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-endif(BUILD_STATIC_LIBS)
+endif(${BUILD_STATIC_LIBS})
 
 # Rules for building and installing the shared library:
 #  - Add the build target for the library
@@ -104,7 +104,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
 
   set(fsunlinsolpcg_SOURCES fsunlinsol_pcg.c)
 
-  if(BUILD_STATIC_LIBS)
+  if(${BUILD_STATIC_LIBS})
     add_library(sundials_fsunlinsolpcg_static
       STATIC ${fsunlinsolpcg_SOURCES})
     set_target_properties(sundials_fsunlinsolpcg_static
@@ -118,7 +118,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
       sundials_sunlinsolpcg_static)
     install(TARGETS sundials_fsunlinsolpcg_static
       DESTINATION ${CMAKE_INSTALL_LIBDIR})
-  endif(BUILD_STATIC_LIBS)
+  endif(${BUILD_STATIC_LIBS})
 
   if(BUILD_SHARED_LIBS)
     add_library(sundials_fsunlinsolpcg_shared

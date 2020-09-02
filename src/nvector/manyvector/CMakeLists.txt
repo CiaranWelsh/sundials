@@ -56,7 +56,7 @@ add_definitions(-DBUILD_SUNDIALS_LIBRARY)
 #  - Add the build target for the NVECMANYVECTOR library
 #  - Set the library name and make sure it is not deleted
 #  - Install the NVECMANYVECTOR library
-if(BUILD_STATIC_LIBS)
+if(${BUILD_STATIC_LIBS})
 
   # ----------------------- No MPI
   add_library(sundials_nvecmanyvector_static STATIC ${nvecmanyvector_SOURCES} ${shared_SOURCES})
@@ -82,14 +82,15 @@ if(BUILD_STATIC_LIBS)
     install(TARGETS sundials_nvecmpimanyvector_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
   endif()
 
-endif(BUILD_STATIC_LIBS)
+endif(${BUILD_STATIC_LIBS})
 
 # Rules for building and installing the shared library:
 #  - Add the build target for the NVECMANYVECTOR library
 #  - Set the library name and make sure it is not deleted
 #  - Set VERSION and SOVERSION for shared libraries
 #  - Install the NVECMANYVECTOR library
-if(BUILD_SHARED_LIBS)
+
+if(${BUILD_SHARED_LIBS})
 
   # ----------------------- No MPI
   add_library(sundials_nvecmanyvector_shared SHARED ${nvecmanyvector_SOURCES} ${shared_SOURCES})
@@ -127,7 +128,7 @@ if(BUILD_SHARED_LIBS)
     install(TARGETS sundials_nvecmpimanyvector_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
   endif()
 
-endif(BUILD_SHARED_LIBS)
+endif(${BUILD_SHARED_LIBS})
 
 # Install the NVECMANYVECTOR header files
 install(FILES ${nvecmanyvector_HEADERS} DESTINATION include/nvector)

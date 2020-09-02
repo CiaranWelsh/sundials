@@ -42,7 +42,7 @@ set(CMAKE_CXX_COMPILER ${MPI_CXX_COMPILER})
 #  - Add the build target for the sunmatrixslunrloc library
 #  - Set the library name and make sure it is not deleted
 #  - Install the sunmatrixslunrloc library
-if(BUILD_STATIC_LIBS)
+if(${BUILD_STATIC_LIBS})
   add_library(sundials_sunmatrixslunrloc_static STATIC
     ${sunmatrixslunrloc_SOURCES} ${shared_SOURCES})
 
@@ -62,14 +62,14 @@ if(BUILD_STATIC_LIBS)
 
   install(TARGETS sundials_sunmatrixslunrloc_static
     DESTINATION ${CMAKE_INSTALL_LIBDIR})
-endif(BUILD_STATIC_LIBS)
+endif(${BUILD_STATIC_LIBS})
 
 # Rules for building and installing the shared library:
 #  - Add the build target for the sunmatrixslunrloc library
 #  - Set the library name and make sure it is not deleted
 #  - Set VERSION and SOVERSION for shared libraries
 #  - Install the sunmatrixslunrloc library
-if(BUILD_SHARED_LIBS)
+if(${BUILD_SHARED_LIBS})
   add_library(sundials_sunmatrixslunrloc_shared SHARED
     ${sunmatrixslunrloc_SOURCES} ${shared_SOURCES})
 
@@ -90,7 +90,7 @@ if(BUILD_SHARED_LIBS)
 
   install(TARGETS sundials_sunmatrixslunrloc_shared
     DESTINATION ${CMAKE_INSTALL_LIBDIR})
-endif(BUILD_SHARED_LIBS)
+endif(${BUILD_SHARED_LIBS})
 
 # Install the sunmatrixslunrloc header files
 install(FILES ${sunmatrixslunrloc_HEADERS} DESTINATION include/sunmatrix)

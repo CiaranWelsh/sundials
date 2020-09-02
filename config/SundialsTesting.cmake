@@ -19,7 +19,7 @@ include(CTest)
 
 
 # Check if development tests are enabled
-if(SUNDIALS_TEST_DEVTESTS)
+if(${SUNDIALS_TEST_DEVTESTS})
 
   message("SUNDIALS Development testing")
 

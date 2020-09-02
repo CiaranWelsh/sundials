@@ -15,7 +15,7 @@
 
 set(cvodes_SOURCES fcvodes_mod.f90 fcvodes_mod.c)
 
-if(BUILD_STATIC_LIBS)
+if(${BUILD_STATIC_LIBS})
   sundials_add_f2003_interface_library(sundials_fcvodes_mod_static STATIC
     ${cvodes_SOURCES}
     $<TARGET_OBJECTS:sundials_fnvecserial_mod_static_obj>

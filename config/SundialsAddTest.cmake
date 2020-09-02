@@ -73,7 +73,7 @@ macro(SUNDIALS_ADD_TEST NAME EXECUTABLE)
   # check that the test is not excluded
   if(NOT ("${SUNDIALS_ADD_TEST_EXAMPLE_TYPE}" STREQUAL "exclude"))
 
-    if(SUNDIALS_TEST_DEVTESTS)
+    if(${SUNDIALS_TEST_DEVTESTS})
 
       # run all tests (standard and develop) with the test runner
 

@@ -53,7 +53,7 @@ if(BUILD_STATIC_LIBS)
   endif()
 endif(BUILD_STATIC_LIBS)
 
-if(BUILD_SHARED_LIBS)
+if(${BUILD_SHARED_LIBS})
   # ----------------------- No MPI
   sundials_add_f2003_interface_library(sundials_fnvecmanyvector_mod_shared SHARED_OBJECT
                                        ${nvecmanyvector_SOURCES})
@@ -75,7 +75,7 @@ if(BUILD_SHARED_LIBS)
                           CLEAN_DIRECT_OUTPUT 1)
     install(TARGETS sundials_fnvecmpimanyvector_mod_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
   endif()
-endif(BUILD_SHARED_LIBS)
+endif(${BUILD_SHARED_LIBS})
 
 message(STATUS "Added NVECTOR_MANYVECTOR F2003 Interface")
 

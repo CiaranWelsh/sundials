@@ -32,7 +32,7 @@ set(sunlinsolband_HEADERS
 #  - Add the build target for the library
 #  - Set the library name and make sure it is not deleted
 #  - Install the library
-if(BUILD_STATIC_LIBS)
+if(${BUILD_STATIC_LIBS})
 
   add_library(sundials_sunlinsolband_static
     STATIC ${sunlinsolband_SOURCES} ${shared_SOURCES})
@@ -52,7 +52,7 @@ if(BUILD_STATIC_LIBS)
   install(TARGETS sundials_sunlinsolband_static
     DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-endif(BUILD_STATIC_LIBS)
+endif(${BUILD_STATIC_LIBS})
 
 # Rules for building and installing the shared library:
 #  - Add the build target for the library
@@ -94,7 +94,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
 
   set(fsunlinsolband_SOURCES fsunlinsol_band.c)
 
-  if(BUILD_STATIC_LIBS)
+  if(${BUILD_STATIC_LIBS})
     add_library(sundials_fsunlinsolband_static
       STATIC ${fsunlinsolband_SOURCES})
     set_target_properties(sundials_fsunlinsolband_static
@@ -109,7 +109,7 @@ if(F77_INTERFACE_ENABLE AND F77_FOUND)
       sundials_sunlinsolband_static)
     install(TARGETS sundials_fsunlinsolband_static
       DESTINATION ${CMAKE_INSTALL_LIBDIR})
-  endif(BUILD_STATIC_LIBS)
+  endif(${BUILD_STATIC_LIBS})
 
   if(BUILD_SHARED_LIBS)
     add_library(sundials_fsunlinsolband_shared
